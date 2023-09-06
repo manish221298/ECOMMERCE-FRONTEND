@@ -6,9 +6,9 @@ import "./style.css";
 const Home = () => {
   const {
     state: { products },
-    productState: { sort, byStock, byFastDelivery },
+    productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
-  console.log("cart data using context byStock", products, byFastDelivery);
+  console.log("cart data using context byStock", products, searchQuery);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -22,6 +22,24 @@ const Home = () => {
     if (byFastDelivery) {
       sortedProducts = sortedProducts.filter((prod) => {
         return prod.fastDelivery === byFastDelivery;
+      });
+    }
+
+    if (byRating) {
+      sortedProducts = sortedProducts.filter((prod) => {
+        return prod.ratings >= byRating;
+      });
+    }
+
+    if (byStock) {
+      sortedProducts = sortedProducts.filter((prod) => {
+        return prod.inStock === 0;
+      });
+    }
+
+    if (searchQuery) {
+      sortedProducts = sortedProducts.filter((prod) => {
+        return prod.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
 

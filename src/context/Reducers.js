@@ -1,7 +1,6 @@
 import { act } from "react-dom/test-utils";
 
 export const cartReducer = (state, action) => {
-  console.log("inside reducer", action);
   switch (action.type) {
     case "ADD_TO_CART":
       return { ...state, cart: [...state.cart, { ...action.payload, qty: 1 }] };
@@ -41,8 +40,8 @@ export const productReducer = (state, action) => {
     case "FILTER_BY_STOCK":
       return { ...state, byStock: !state.byStock };
 
-      case "FILTER_BY_SEARCH":
-        return {...state, searchQuery: action.payload}
+    case "FILTER_BY_SEARCH":
+      return { ...state, searchQuery: action.payload };
 
     case "CLEAR_FILTER":
       return {

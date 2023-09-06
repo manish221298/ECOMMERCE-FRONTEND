@@ -11,7 +11,7 @@ const Filters = () => {
     productDispatch,
   } = CartState();
 
-  console.log("first byrating sort", byRating, sort, byStock, byFastDelivery);
+ 
 
   return (
     <div className="filters">
@@ -94,7 +94,6 @@ const Filters = () => {
       <Button variant="light" onClick={() => {
         productDispatch({
           type: "CLEAR_FILTER",
-          
         })
       }}>Clear Filters</Button>
     </div>
