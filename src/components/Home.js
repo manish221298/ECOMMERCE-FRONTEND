@@ -6,9 +6,9 @@ import "./style.css";
 const Home = () => {
   const {
     state: { products },
-    productState: { sort },
+    productState: { sort, byStock, byFastDelivery },
   } = CartState();
-  console.log("cart data using context api", products);
+  console.log("cart data using context byStock", products, byFastDelivery);
 
   const transformProducts = () => {
     let sortedProducts = products;
@@ -16,6 +16,12 @@ const Home = () => {
     if (sort) {
       sortedProducts = sortedProducts.sort((a, b) => {
         return sort === "lowToHigh" ? a.price - b.price : b.price - a.price;
+      });
+    }
+
+    if (byFastDelivery) {
+      sortedProducts = sortedProducts.filter((prod) => {
+        return prod.fastDelivery === byFastDelivery;
       });
     }
 
