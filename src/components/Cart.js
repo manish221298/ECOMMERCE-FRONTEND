@@ -19,7 +19,7 @@ const Cart = () => {
     setTotalItem(cart.reduce((acc, curr) => acc + Number(curr.qty), 0));
   }, [cart]);
 
-  console.log("cart data in page", totalItem);
+  
 
   return (
     <div className="home">

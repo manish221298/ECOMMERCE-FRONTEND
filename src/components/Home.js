@@ -5,13 +5,12 @@ import "./style.css";
 
 const Home = () => {
   const {
-    state: { products },
+    state: { products, data },
     productState: { sort, byStock, byFastDelivery, byRating, searchQuery },
   } = CartState();
-  console.log("cart data using context byStock", products, searchQuery);
 
   const transformProducts = () => {
-    let sortedProducts = products;
+    let sortedProducts = data;
 
     if (sort) {
       sortedProducts = sortedProducts.sort((a, b) => {

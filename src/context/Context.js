@@ -17,8 +17,6 @@ const Context = ({ children }) => {
         'https://loremflickr.com/640/480'
       ];
 
-
-
   const products = [...Array(12)].map(() => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
@@ -32,6 +30,7 @@ const Context = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     products: products,
     cart: [],
+    data: []
   });
 
   const [productState, productDispatch] = useReducer( productReducer, {
